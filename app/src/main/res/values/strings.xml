@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NUMAD22Fa_JiazheChen</string>
-    <string name="about_me">About Me</string>
-    <string name="aboutme">Jiazhe Chen, chen.jiazhe@northeastern.edu</string>
-    <string name="aboutmeText">Jiazhe Chen, chen.jiazhe@northeastern.edu</string>
+    <string name="hello">Hello world!</string>
+    <string name="aboutmeText">Jiazhe Chen chen.jiazhe@northeastern.edu</string>
+    <string name="about_me">ABOUT ME</string>
+    <string name="aboutMe">ABOUT ME</string>
 </resources>
