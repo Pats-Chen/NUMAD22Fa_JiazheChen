@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        TestReleaseConfig {
+            storeFile file('E:\\PATS-PC\\AndroidStudioProjects\\MyKeyStore.jks')
+            storePassword '01051518'
+            keyAlias 'First Key'
+            keyPassword '01051518'
+        }
+    }
     compileSdk 32
 
     defaultConfig {
@@ -13,6 +21,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.TestReleaseConfig
     }
 
     buildTypes {

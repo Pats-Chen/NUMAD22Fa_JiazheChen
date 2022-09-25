@@ -3,5 +3,12 @@
     <string name="hello">Hello world!</string>
     <string name="aboutmeText">Jiazhe Chen chen.jiazhe@northeastern.edu</string>
     <string name="about_me">ABOUT ME</string>
-    <string name="aboutMe">ABOUT ME</string>
+    <string name="clicky_clicky">CLICKY CLICKY</string>
+    <string name="clicky_a">A</string>
+    <string name="clicky_b">B</string>
+    <string name="clicky_c">C</string>
+    <string name="clicky_d">D</string>
+    <string name="clicky_e">E</string>
+    <string name="clicky_f">F</string>
+    <string name="press_text">Pressed: - </string>
 </resources>
