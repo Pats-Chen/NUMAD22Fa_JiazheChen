@@ -13,10 +13,10 @@
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
         android:text="@string/hello"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/clickyClickyButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/aboutmeButton"
