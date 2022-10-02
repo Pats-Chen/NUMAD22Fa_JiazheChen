@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">NUMAD22Fa_JiazheChen</string>
     <string name="hello">Hello world!</string>
-    <string name="aboutmeText">Jiazhe Chen\nchen.jiazhe@northeastern.edu</string>
     <string name="about_me">ABOUT ME</string>
+    <string name="about_me_text">Jiazhe Chen\nchen.jiazhe@northeastern.edu</string>
     <string name="clicky_clicky">CLICKY CLICKY</string>
     <string name="clicky_a">A</string>
     <string name="clicky_b">B</string>
@@ -17,4 +17,5 @@
     <string name="press_d">Pressed: D </string>
     <string name="press_e">Pressed: E </string>
     <string name="press_f">Pressed: F </string>
+    <string name="link_collector">LINK COLLECTOR</string>
 </resources>

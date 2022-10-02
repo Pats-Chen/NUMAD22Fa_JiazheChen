@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/aboutmeButton"
+        android:id="@+id/aboutMeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
@@ -41,9 +41,21 @@
         android:onClick="onClick"
         android:text="@string/clicky_clicky"
         app:layout_constraintTop_toBottomOf="@+id/hello"
-        app:layout_constraintBottom_toTopOf="@+id/aboutmeButton"
+        app:layout_constraintBottom_toTopOf="@+id/aboutMeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/linkCollectorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:onClick="onClick"
+        android:text="@string/link_collector"
+        app:layout_constraintTop_toBottomOf="@+id/clickyClickyButton"
+        app:layout_constraintBottom_toTopOf="@+id/aboutMeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

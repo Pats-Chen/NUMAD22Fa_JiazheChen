@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -16,13 +15,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View view) {
         int theId = view.getId();
-        if (theId == R.id.aboutmeButton) {
-            Toast.makeText(getApplicationContext(),
-                    R.string.aboutmeText,
-                    Toast.LENGTH_SHORT).show();
+        if (theId == R.id.aboutMeButton) {
+            Intent aboutMeIntent = new Intent(this, AboutMeActivity.class);
+            startActivity(aboutMeIntent);
+            //import android.widget.Toast;
+            // Toast.makeText(getApplicationContext(),
+            // R.string.aboutmeText,
+            // Toast.LENGTH_SHORT).show();
         } else if (theId == R.id.clickyClickyButton) {
             Intent clickyIntent = new Intent(this, ClickyClickyActivity.class);
             startActivity(clickyIntent);
+        } else if (theId == R.id.linkCollectorButton) {
+            Intent linkCollectorIntent = new Intent(this, LinkCollectorActivity.class);
+            startActivity(linkCollectorIntent);
         }
     }
 }
