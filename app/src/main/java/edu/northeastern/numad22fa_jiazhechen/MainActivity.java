@@ -19,10 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (theId == R.id.aboutMeButton) {
             Intent aboutMeIntent = new Intent(this, AboutMeActivity.class);
             startActivity(aboutMeIntent);
-            //import android.widget.Toast;
-            // Toast.makeText(getApplicationContext(),
-            // R.string.aboutmeText,
-            // Toast.LENGTH_SHORT).show();
         } else if (theId == R.id.clickyClickyButton) {
             Intent clickyIntent = new Intent(this, ClickyClickyActivity.class);
             startActivity(clickyIntent);

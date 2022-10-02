@@ -29,9 +29,7 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkViewHolder> {
     public void onBindViewHolder(@NonNull LinkViewHolder holder, int position) {
         holder.name.setText(links.get(position).getName());
         holder.url.setText(links.get(position).getUrl());
-        holder.itemView.setOnClickListener(view -> {
-            Toast.makeText(context, links.get(position).getUrl(), Toast.LENGTH_SHORT).show();
-        });
+        holder.itemView.setOnClickListener(view -> Toast.makeText(context, links.get(position).getUrl(), Toast.LENGTH_SHORT).show());
     }
 
     @Override
