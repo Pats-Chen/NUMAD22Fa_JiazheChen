@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.android.material.snackbar.Snackbar;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -15,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
     }
 
+    @Override
     public void onClick(View view) {
         int theId = view.getId();
         if (theId == R.id.aboutMeButton) {
@@ -31,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent linkCollectorIntent = new Intent(this, LinkCollectorActivity.class);
             startActivity(linkCollectorIntent);
         } else if (theId == R.id.fab) {
-            Snackbar.make(view, "FAB clicked", Snackbar.LENGTH_SHORT)
-                    .setAction("Action", null).show();
+            Intent linkUserInputIntent = new Intent(this, LinkUserInputActivity.class);
+            startActivity(linkUserInputIntent);
         }
     }
 }

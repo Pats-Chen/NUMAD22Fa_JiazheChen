@@ -27,4 +27,8 @@ public class LinkCollectorActivity extends AppCompatActivity {
         linkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         linkRecyclerView.setAdapter(new LinkAdapter(linkList, this));
     }
+
+    public void addLinkToList(String name, String url) {
+        linkList.add(new Link(name, url));
+    }
 }
