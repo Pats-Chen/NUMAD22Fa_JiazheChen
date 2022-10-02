@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (theId == R.id.linkCollectorButton) {
             Intent linkCollectorIntent = new Intent(this, LinkCollectorActivity.class);
             startActivity(linkCollectorIntent);
+        } else if (theId == R.id.fab) {
+            Snackbar.make(view, "FAB clicked", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null).show();
         }
     }
 }
