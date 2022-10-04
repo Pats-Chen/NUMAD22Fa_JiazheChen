@@ -3,31 +3,22 @@ package edu.northeastern.numad22fa_jiazhechen;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    @Override
-    public void onClick(View view) {
-        int theId = view.getId();
-        if (theId == R.id.aboutMeButton) {
-            Intent aboutMeIntent = new Intent(this, AboutMeActivity.class);
-            startActivity(aboutMeIntent);
-        } else if (theId == R.id.clickyClickyButton) {
-            Intent clickyIntent = new Intent(this, ClickyClickyActivity.class);
-            startActivity(clickyIntent);
-        } else if (theId == R.id.linkCollectorButton) {
-            Intent linkCollectorIntent = new Intent(this, LinkCollectorActivity.class);
-            startActivity(linkCollectorIntent);
-        } else if (theId == R.id.fab) {
-            Intent linkUserInputIntent = new Intent(this, LinkUserInputActivity.class);
-            startActivity(linkUserInputIntent);
-        }
+        Button aboutMeButton = findViewById(R.id.aboutMeButton);
+        aboutMeButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, AboutMeActivity.class)));
+
+        Button clickyClickyButton = findViewById(R.id.clickyClickyButton);
+        clickyClickyButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ClickyClickyActivity.class)));
+
+        Button linkCollectorButton = findViewById(R.id.linkCollectorButton);
+        linkCollectorButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LinkCollectorActivity.class)));
     }
 }

@@ -1,34 +1,52 @@
 package edu.northeastern.numad22fa_jiazhechen;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class LinkCollectorActivity extends AppCompatActivity {
-    RecyclerView linkRecyclerView;
-    List<Link> linkList;
-    Bundle userInputBundle;
+    RecyclerView recyclerView;
+    FloatingActionButton fab;
+
+    ArrayList<String> linkName;
+    ArrayList<String> linkString;
+    LinkAdapter linkAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link_collector);
 
-        linkList = new ArrayList<>();
+        recyclerView = findViewById(R.id.recyclerView);
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> openDialog());
 
-        userInputBundle = getIntent().getExtras();
-        linkList.add(new Link(userInputBundle.getString("NAME")
-                , userInputBundle.getString("URL")));
+//            Intent intent = new Intent(LinkCollectorActivity.this, AddActivity.class);
+//            startActivity(intent)
 
-        linkList.add(new Link("Google", "www.google.com"));
+        linkName = new ArrayList<>();
+        linkString = new ArrayList<>();
+        linkName.add("Google");
+        linkString.add("www.google.com");
+        linkName.add("Facebook");
+        linkString.add("www.facebook.com");
 
-        linkRecyclerView = findViewById(R.id.linkRecyclerView);
-        linkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        linkRecyclerView.setAdapter(new LinkAdapter(linkList, this));
+//        storeDataInArrays();
+
+        linkAdapter = new LinkAdapter(LinkCollectorActivity.this, linkName, linkString);
+        recyclerView.setAdapter(linkAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(LinkCollectorActivity.this));
+    }
+
+    private void openDialog() {
+        LinkInputFragment linkInputFragment = new LinkInputFragment();
+        linkInputFragment.show(getSupportFragmentManager(), "USER INPUT FRAGMENT");
     }
 }

@@ -2,38 +2,56 @@ package edu.northeastern.numad22fa_jiazhechen;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class LinkAdapter extends RecyclerView.Adapter<LinkViewHolder> {
-    private final List<Link> links;
-    private final Context context;
+public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder> {
+    private Context context;
+    private ArrayList<String> linkNameList;
+    private ArrayList<String> linkStringList;
 
-    public LinkAdapter(List<Link> links, Context context) {
-        this.links = links;
+    LinkAdapter(Context context, ArrayList<String> linkNameList, ArrayList<String> linkStringList) {
         this.context = context;
+        this.linkNameList = linkNameList;
+        this.linkStringList = linkStringList;
     }
+
 
     @NonNull
     @Override
     public LinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LinkViewHolder(LayoutInflater.from(context).inflate(R.layout.item_link, null));
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.layout_link, parent, false);
+        return new LinkViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull LinkViewHolder holder, int position) {
-        holder.name.setText(links.get(position).getName());
-        holder.url.setText(links.get(position).getUrl());
-        holder.itemView.setOnClickListener(view -> Toast.makeText(context, links.get(position).getUrl(), Toast.LENGTH_SHORT).show());
+        holder.linkName.setText(String.valueOf(linkNameList.get(position)));
+        holder.linkString.setText(String.valueOf(linkStringList.get(position)));
+
+
     }
 
     @Override
     public int getItemCount() {
-        return links.size();
+        return linkNameList.size();
+    }
+
+    public class LinkViewHolder extends RecyclerView.ViewHolder {
+        TextView linkName;
+        TextView linkString;
+
+        public LinkViewHolder(@NonNull View itemView) {
+            super(itemView);
+            linkName = itemView.findViewById(R.id.linkName);
+            linkString = itemView.findViewById(R.id.linkString);
+        }
     }
 }
