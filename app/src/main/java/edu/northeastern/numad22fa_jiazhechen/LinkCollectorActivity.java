@@ -3,19 +3,18 @@ package edu.northeastern.numad22fa_jiazhechen;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class LinkCollectorActivity extends AppCompatActivity implements LinkInputFragment.LinkDialogListener, RecyclerViewInterface {
     RecyclerView recyclerView;
@@ -33,22 +32,32 @@ public class LinkCollectorActivity extends AppCompatActivity implements LinkInpu
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> openDialog());
 
-//            Intent intent = new Intent(LinkCollectorActivity.this, AddActivity.class);
-//            startActivity(intent)
-//        linkName.add("Google");
-//        linkString.add("www.google.com");
-//        linkName.add("Facebook");
-//        linkString.add("www.facebook.com");
-
         linkName = new ArrayList<>();
         linkString = new ArrayList<>();
-
-
-//        storeDataInArrays();
 
         linkAdapter = new LinkAdapter(LinkCollectorActivity.this, LinkCollectorActivity.this, linkName, linkString);
         recyclerView.setAdapter(linkAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(LinkCollectorActivity.this));
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        for (int i = 0;i < linkName.size();i++) {
+            savedInstanceState.putInt("LIST SIZE", linkName.size());
+            savedInstanceState.putString("NAME NO" + i, linkName.get(i));
+            savedInstanceState.putString("URL NO" + i, linkString.get(i));
+        }
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        int listSize = savedInstanceState.getInt("LIST SIZE");
+        for (int i = 0;i < listSize;i++) {
+            linkName.add(savedInstanceState.getString("NAME NO" + i));
+            linkString.add(savedInstanceState.getString("URL NO" + i));
+        }
     }
 
     private void openDialog() {
