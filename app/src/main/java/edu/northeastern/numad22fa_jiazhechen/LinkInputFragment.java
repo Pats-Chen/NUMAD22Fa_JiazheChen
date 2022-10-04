@@ -46,7 +46,6 @@ public class LinkInputFragment extends AppCompatDialogFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
         listener = (LinkDialogListener) context;
     }
 

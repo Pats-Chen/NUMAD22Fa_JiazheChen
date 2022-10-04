@@ -13,15 +13,16 @@ import java.util.ArrayList;
 
 public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder> {
     private Context context;
+    private final RecyclerViewInterface recyclerViewInterface;
     private ArrayList<String> linkNameList;
     private ArrayList<String> linkStringList;
 
-    LinkAdapter(Context context, ArrayList<String> linkNameList, ArrayList<String> linkStringList) {
+    LinkAdapter(Context context, RecyclerViewInterface recyclerViewInterface, ArrayList<String> linkNameList, ArrayList<String> linkStringList) {
         this.context = context;
+        this.recyclerViewInterface = recyclerViewInterface;
         this.linkNameList = linkNameList;
         this.linkStringList = linkStringList;
     }
-
 
     @NonNull
     @Override
@@ -35,8 +36,6 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder
     public void onBindViewHolder(@NonNull LinkViewHolder holder, int position) {
         holder.linkName.setText(String.valueOf(linkNameList.get(position)));
         holder.linkString.setText(String.valueOf(linkStringList.get(position)));
-
-
     }
 
     @Override
@@ -52,6 +51,19 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder
             super(itemView);
             linkName = itemView.findViewById(R.id.linkName);
             linkString = itemView.findViewById(R.id.linkString);
+
+            itemView.setOnClickListener(view -> {
+                if (recyclerViewInterface != null) {
+                    int position = getAbsoluteAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        recyclerViewInterface.onLinkClick(position);
+                    }
+                }
+            });
         }
+    }
+
+    public String getLink(int position) {
+        return String.valueOf(linkStringList.get(position));
     }
 }
