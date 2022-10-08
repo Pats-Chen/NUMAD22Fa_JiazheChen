@@ -24,4 +24,7 @@
     <string name="name_hint">Name (Google)</string>
     <string name="prime_finder">PRIME FINDER</string>
     <string name="prime_text">Last Prime Number: -\nNow Checking: -</string>
+    <string name="find_primes">FIND PRIMES</string>
+    <string name="terminate_search">TERMINATE SEARCH</string>
+    <string name="pacifier_switch">PACIFIER SWITCH</string>
 </resources>
