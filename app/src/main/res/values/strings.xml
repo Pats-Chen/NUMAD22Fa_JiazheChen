@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NUMAD22Fa_JiazheChen</string>
-    <string name="hello">Hello world!</string>
+    <string name="hello">HELLO WORLD!</string>
     <string name="about_me">ABOUT ME</string>
     <string name="about_me_text">Jiazhe Chen\nchen.jiazhe@northeastern.edu</string>
     <string name="clicky_clicky">CLICKY CLICKY</string>
@@ -22,4 +22,6 @@
     <string name="submit">SUBMIT</string>
     <string name="url_hint">URL (www.google.com)</string>
     <string name="name_hint">Name (Google)</string>
+    <string name="prime_finder">PRIME FINDER</string>
+    <string name="prime_text">Last Prime Number: -\nNow Checking: -</string>
 </resources>

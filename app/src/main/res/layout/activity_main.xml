@@ -13,6 +13,7 @@
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
         android:text="@string/hello"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/clickyClickyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,20 +21,20 @@
 
     <Button
         android:id="@+id/aboutMeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
         android:text="@string/about_me"
-        app:layout_constraintTop_toBottomOf="@+id/linkCollectorButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primeFinderButton"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
         android:id="@+id/clickyClickyButton"
-        android:layout_width="wrap_content"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
@@ -45,14 +46,26 @@
 
     <Button
         android:id="@+id/linkCollectorButton"
-        android:layout_width="wrap_content"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
         android:text="@string/link_collector"
-        app:layout_constraintBottom_toTopOf="@+id/aboutMeButton"
+        app:layout_constraintBottom_toTopOf="@+id/primeFinderButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clickyClickyButton" />
+
+    <Button
+        android:id="@+id/primeFinderButton"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:text="@string/prime_finder"
+        app:layout_constraintBottom_toTopOf="@+id/aboutMeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linkCollectorButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

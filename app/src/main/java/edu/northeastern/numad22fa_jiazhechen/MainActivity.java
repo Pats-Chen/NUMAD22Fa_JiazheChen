@@ -20,5 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button linkCollectorButton = findViewById(R.id.linkCollectorButton);
         linkCollectorButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LinkCollectorActivity.class)));
+
+        Button primeFinderButton = findViewById(R.id.primeFinderButton);
+        primeFinderButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, PrimeFinderActivity.class)));
     }
 }
