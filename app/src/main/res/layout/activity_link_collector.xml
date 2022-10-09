@@ -13,12 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="14dp"
-        android:contentDescription="@string/input"
         android:clickable="true"
+        android:contentDescription="@string/input"
         android:focusable="true"
         android:src="@drawable/ic_baseline_done_24"
         android:tint="@android:color/white"
-        android:backgroundTint="@color/design_default_color_primary"
+        android:backgroundTint="#77428D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
