@@ -36,9 +36,7 @@ public class PrimeFinderActivity extends AppCompatActivity {
         });
 
         Button terminateButton = findViewById(R.id.terminateSearchButton);
-        terminateButton.setOnClickListener(view -> {
-            terminateFlag = true;
-        });
+        terminateButton.setOnClickListener(view -> terminateFlag = true);
 
         pacifierSwitch = findViewById(R.id.pacifierSwitch);
     }
@@ -47,17 +45,16 @@ public class PrimeFinderActivity extends AppCompatActivity {
         @Override
         public void run() {
             int primeNumber = 3;
-            int numberToCheck = primeNumber;;
+            int numberToCheck = primeNumber;
+            long startTime = System.currentTimeMillis();
             while (!terminateFlag) {
-//            for (numberToCheck = primeNumber; numberToCheck < 3000000; numberToCheck += 2) {
-                long startTime = System.currentTimeMillis();
                 Log.d(TAG, "run: " + primeNumber);
                 Log.d(TAG, "run: " + numberToCheck);
                 if (isPrime(numberToCheck)) {
                     primeNumber = numberToCheck;
                 }
                 numberToCheck += 2;
-                if ((System.currentTimeMillis() - startTime) >= 500) {
+                if ((System.currentTimeMillis() - startTime) % 500 == 0) {
                     final int finalPrimeNumber = primeNumber;
                     final int finalNumberToCheck = numberToCheck;
                     mainHandler.post(new Runnable() {
