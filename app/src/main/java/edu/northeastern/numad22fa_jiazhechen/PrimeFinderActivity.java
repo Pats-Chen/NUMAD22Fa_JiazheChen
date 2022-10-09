@@ -47,15 +47,32 @@ public class PrimeFinderActivity extends AppCompatActivity {
         outState.putInt("Last Prime Number", primeNumber);
         outState.putInt("Last Number to Check", numberToCheck);
         outState.putBoolean("Terminate Flag", terminateFlag);
+        Log.d(TAG, "onSaveInstanceState: " + primeNumber);
+        Log.d(TAG, "onSaveInstanceState: " + numberToCheck);
+        Log.d(TAG, "onSaveInstanceState: " + terminateFlag);
     }
 
     @Override
     protected void onRestoreInstanceState(final Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
         primeNumber = savedInstanceState.getInt("Last Prime Number");
         numberToCheck = savedInstanceState.getInt("Last Number to Check");
         terminateFlag = savedInstanceState.getBoolean("Terminate Flag");
+        Log.d(TAG, "onRestoreInstanceState: " + primeNumber);
+        Log.d(TAG, "onRestoreInstanceState: " + numberToCheck);
+        Log.d(TAG, "onRestoreInstanceState: " + terminateFlag);
+        if (!terminateFlag) {
+            PrimeFinderThread primeFinderThread = new PrimeFinderThread();
+            new Thread(primeFinderThread).start();
+        }
+        final int finalPrimeNumber = primeNumber;
+        mainHandler.post(new Runnable() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void run() {
+                primeNumberTextView.setText("Last Prime Number: " + finalPrimeNumber + "\nNow Checking: -");
+            }
+        });
     }
 
     class PrimeFinderThread implements Runnable {
