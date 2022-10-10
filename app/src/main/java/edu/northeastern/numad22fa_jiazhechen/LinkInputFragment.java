@@ -3,7 +3,6 @@ package edu.northeastern.numad22fa_jiazhechen;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LinkInputFragment extends AppCompatDialogFragment {
@@ -36,9 +34,6 @@ public class LinkInputFragment extends AppCompatDialogFragment {
 
         linkName = view.findViewById(R.id.linkNameInput);
         linkString = view.findViewById(R.id.linkStringInput);
-
-//        final EditText linkName = new EditText(getContext());
-//        final EditText linkString = new EditText(getContext());
 
         return dialogBuilder.create();
     }

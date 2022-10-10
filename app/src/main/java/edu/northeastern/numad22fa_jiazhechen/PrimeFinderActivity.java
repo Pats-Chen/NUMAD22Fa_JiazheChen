@@ -23,7 +23,6 @@ public class PrimeFinderActivity extends AppCompatActivity {
     volatile boolean terminateFlag = false;
     Handler mainHandler;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +90,6 @@ public class PrimeFinderActivity extends AppCompatActivity {
         }
         backPressTime = System.currentTimeMillis();
     }
-
 
     class PrimeFinderThread implements Runnable {
         @Override

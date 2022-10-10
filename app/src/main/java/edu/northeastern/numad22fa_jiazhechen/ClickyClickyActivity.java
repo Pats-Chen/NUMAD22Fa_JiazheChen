@@ -1,9 +1,10 @@
 package edu.northeastern.numad22fa_jiazhechen;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ClickyClickyActivity extends AppCompatActivity implements View.OnClickListener {
     TextView pressTextView;
