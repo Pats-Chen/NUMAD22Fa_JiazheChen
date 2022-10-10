@@ -20,7 +20,7 @@ public class PrimeFinderActivity extends AppCompatActivity {
     CheckBox pacifierSwitch;
     static int primeNumber = 3;
     static int numberToCheck = 3;
-    volatile boolean terminateFlag = false;
+    static boolean terminateFlag = false;
     Handler mainHandler;
 
     @Override
@@ -38,7 +38,18 @@ public class PrimeFinderActivity extends AppCompatActivity {
         });
 
         Button terminateButton = findViewById(R.id.terminateSearchButton);
-        terminateButton.setOnClickListener(view -> terminateFlag = true);
+        terminateButton.setOnClickListener(view -> {
+            terminateFlag = true;
+//            primeThread.interrupt();
+            final int finalPrimeNumber = primeNumber;
+            mainHandler.post(new Runnable() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void run() {
+                    primeNumberTextView.setText("Last Prime Number: " + finalPrimeNumber + "\nNow Checking: -");
+                }
+            });
+        });
 
         pacifierSwitch = findViewById(R.id.pacifierSwitch);
     }
@@ -46,6 +57,7 @@ public class PrimeFinderActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull final Bundle outState) {
         super.onSaveInstanceState(outState);
+//        primeThread.interrupt();
         outState.putInt("Last Prime Number", primeNumber);
         outState.putInt("Last Number to Check", numberToCheck);
         outState.putBoolean("Terminate Flag", terminateFlag);
@@ -64,17 +76,28 @@ public class PrimeFinderActivity extends AppCompatActivity {
         Log.d(TAG, "onRestoreInstanceState: " + numberToCheck);
         Log.d(TAG, "onRestoreInstanceState: " + terminateFlag);
         if (!terminateFlag) {
-            PrimeFinderThread primeFinderThread = new PrimeFinderThread();
-            new Thread(primeFinderThread).start();
+//            PrimeFinderThread primeFinderThread = new PrimeFinderThread();
+//            new Thread(primeFinderThread).start();
+            Toast.makeText(getBaseContext(), "Hit Find Primes Button to Continue!", Toast.LENGTH_SHORT).show();
         }
-        final int finalPrimeNumber = primeNumber;
-        mainHandler.post(new Runnable() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void run() {
-                primeNumberTextView.setText("Last Prime Number: " + finalPrimeNumber + "\nNow Checking: -");
-            }
-        });
+        if (primeNumber == 3) {
+            mainHandler.post(new Runnable() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void run() {
+                    primeNumberTextView.setText("Last Prime Number: -\nNow Checking: -");
+                }
+            });
+        } else {
+            final int finalPrimeNumber = primeNumber;
+            mainHandler.post(new Runnable() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void run() {
+                    primeNumberTextView.setText("Last Prime Number: " + finalPrimeNumber + "\nNow Checking: -");
+                }
+            });
+        }
     }
 
     @Override
@@ -97,13 +120,13 @@ public class PrimeFinderActivity extends AppCompatActivity {
             numberToCheck = primeNumber;
             long startTime = System.currentTimeMillis();
             while (!terminateFlag) {
-                Log.d(TAG, "This prime number is: " + primeNumber);
-                Log.d(TAG, "This number to be check is: " + numberToCheck);
                 if (isPrime(numberToCheck)) {
                     primeNumber = numberToCheck;
                 }
                 numberToCheck += 2;
                 if ((System.currentTimeMillis() - startTime) % 500 == 0) {
+                    Log.d(TAG, "This prime number is: " + primeNumber);
+                    Log.d(TAG, "This number to be check is: " + numberToCheck);
                     final int finalPrimeNumber = primeNumber;
                     final int finalNumberToCheck = numberToCheck;
                     mainHandler.post(new Runnable() {
@@ -115,14 +138,6 @@ public class PrimeFinderActivity extends AppCompatActivity {
                     });
                 }
             }
-            final int finalPrimeNumber = primeNumber;
-            mainHandler.post(new Runnable() {
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void run() {
-                    primeNumberTextView.setText("Last Prime Number: " + finalPrimeNumber + "\nNow Checking: -");
-                }
-            });
         }
 
         private boolean isPrime(int number) {
