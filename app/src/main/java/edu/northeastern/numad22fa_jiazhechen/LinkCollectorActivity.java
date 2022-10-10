@@ -75,7 +75,6 @@ public class LinkCollectorActivity extends AppCompatActivity implements LinkInpu
     public void showSnackbar() {
         Snackbar successSnackbar = Snackbar.make(findViewById(R.id.linkCollectorLayout), "The link was successfully created!", Snackbar.LENGTH_SHORT);
         successSnackbar.show();
-
     }
 
     @Override

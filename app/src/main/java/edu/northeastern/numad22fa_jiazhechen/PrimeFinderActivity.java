@@ -8,18 +8,21 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PrimeFinderActivity extends AppCompatActivity {
     private static final String TAG = "PrimeFinderActivity";
+    private long backPressTime;
     TextView primeNumberTextView;
     CheckBox pacifierSwitch;
     static int primeNumber = 3;
     static int numberToCheck = 3;
     volatile boolean terminateFlag = false;
     Handler mainHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,21 @@ public class PrimeFinderActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressTime + 2000 > System.currentTimeMillis()) {
+            primeNumber = 3;
+            numberToCheck = 3;
+            terminateFlag = false;
+            super.onBackPressed();
+            finish();
+        } else {
+            Toast.makeText(getBaseContext(), "Press Back Again to Stop Searching!", Toast.LENGTH_SHORT).show();
+        }
+        backPressTime = System.currentTimeMillis();
+    }
+
 
     class PrimeFinderThread implements Runnable {
         @Override
