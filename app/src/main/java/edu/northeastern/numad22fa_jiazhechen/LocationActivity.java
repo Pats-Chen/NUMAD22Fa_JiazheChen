@@ -9,6 +9,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 public class LocationActivity extends AppCompatActivity {
+    private static final String TAG = "LocationActivity";
     private static final int PERMISSIONS_FINE_LOCATION = 99;
     public static final int PRIORITY_BALANCED_POWER_ACCURACY = 102;
 
@@ -75,6 +77,8 @@ public class LocationActivity extends AppCompatActivity {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(LocationActivity.this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationProviderClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY, null).addOnSuccessListener(this, location -> {
+                Log.d(TAG, "updateLocation: latitude = " + location.getLatitude());
+                Log.d(TAG, "updateLocation: longitude = " + location.getLongitude());
                 if (lastLocation == null) {
                     lastLocation = location;
                     currentLocation = location;
