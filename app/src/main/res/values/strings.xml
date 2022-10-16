@@ -27,4 +27,7 @@
     <string name="find_primes">FIND PRIMES</string>
     <string name="terminate_search">TERMINATE SEARCH</string>
     <string name="pacifier_switch">PACIFIER SWITCH</string>
+    <string name="location">LOCATION</string>
+    <string name="location_text">Latitude: -\nLongitude: -\nTotal Distance: -</string>
+    <string name="reset_distance">RESET</string>
 </resources>

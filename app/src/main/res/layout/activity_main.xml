@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/primeFinderButton"
+        app:layout_constraintTop_toBottomOf="@+id/locationButton"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
@@ -63,9 +63,21 @@
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
         android:text="@string/prime_finder"
-        app:layout_constraintBottom_toTopOf="@+id/aboutMeButton"
+        app:layout_constraintBottom_toTopOf="@+id/locationButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linkCollectorButton" />
+
+    <Button
+        android:id="@+id/locationButton"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:text="@string/location"
+        app:layout_constraintBottom_toTopOf="@+id/aboutMeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primeFinderButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,9 @@
         android:theme="@style/Theme.NUMAD22Fa_JiazheChen"
         tools:targetApi="31">
         <activity
+            android:name=".LocationActivity"
+            android:exported="false" />
+        <activity
             android:name=".PrimeFinderActivity"
             android:exported="false" />
         <activity
