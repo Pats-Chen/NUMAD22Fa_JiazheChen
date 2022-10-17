@@ -59,7 +59,7 @@ public class LocationActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void run() {
-                locationTextView.setText("Latitude: -\nLongitude: -\nTotal Distance: " + totalDistance);
+                locationTextView.setText("Latitude: -\nLongitude: -\nTotal Distance: " + totalDistance + " Meters");
             }
         });
         });
@@ -84,7 +84,7 @@ public class LocationActivity extends AppCompatActivity {
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void run() {
-                                locationTextView.setText("Latitude: -\nLongitude: -\nTotal Distance: " + totalDistance);
+                                locationTextView.setText("Latitude: -\nLongitude: -\nTotal Distance: " + totalDistance + " Meters");
                             }
                         });
                     }
@@ -195,7 +195,7 @@ public class LocationActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void run() {
-                locationTextView.setText("Latitude: " + latitude + "\nLongitude: " + longitude + "\nTotal Distance: " + totalDistance);
+                locationTextView.setText("Latitude: " + latitude + "\nLongitude: " + longitude + "\nTotal Distance: " + totalDistance + " Meters");
             }
         });
     }
