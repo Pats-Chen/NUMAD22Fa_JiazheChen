@@ -34,6 +34,7 @@ public class LocationActivity extends AppCompatActivity {
     Location currentLocation;
     float totalDistance;
     Handler mainHandler;
+    private long backPressTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +43,20 @@ public class LocationActivity extends AppCompatActivity {
 
         locationTextView = findViewById(R.id.locationTextView);
         lastLocation = null;
+        currentLocation = null;
         totalDistance = 0.0f;
 
         mainHandler = new Handler(Looper.getMainLooper());
 
         Button restDistanceButton = findViewById(R.id.resetDistanceButton);
-        restDistanceButton.setOnClickListener(view -> mainHandler.post(() -> {
-            totalDistance = 0.0f;
-            locationTextView.setText("Latitude: -\nLongitude: -\nTotal Distance: -");
+        restDistanceButton.setOnClickListener(view -> mainHandler.post(new Runnable() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void run() {
+                lastLocation = null;
+                totalDistance = 0.0f;
+                locationTextView.setText("Latitude: -\nLongitude: -\nTotal Distance: " + totalDistance);
+            }
         }));
 
         locationRequestBuilder = new LocationRequest.Builder(60 * 1000);
@@ -57,6 +64,45 @@ public class LocationActivity extends AppCompatActivity {
         locationRequestBuilder.setPriority(PRIORITY_BALANCED_POWER_ACCURACY);
 
         updateLocation();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull final Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("Last Location", lastLocation);
+        outState.putParcelable("Current Location", currentLocation);
+        outState.putFloat("Total Distance", totalDistance);
+        Log.d(TAG, "onSaveInstanceState: " + totalDistance);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(final Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        lastLocation = savedInstanceState.getParcelable("Last Location");
+        currentLocation = savedInstanceState.getParcelable("Current Location");
+        totalDistance = savedInstanceState.getFloat("Total Distance");
+        Log.d(TAG, "onRestoreInstanceState: " + totalDistance);
+        mainHandler.post(new Runnable() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void run() {
+                locationTextView.setText("Latitude: " + currentLocation.getLatitude() + "\nLongitude: " + currentLocation.getLongitude() + "\nTotal Distance: " + totalDistance);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressTime + 2000 > System.currentTimeMillis()) {
+            lastLocation = null;
+            currentLocation = null;
+            totalDistance = 0.0f;
+            super.onBackPressed();
+            finish();
+        } else {
+            Toast.makeText(getBaseContext(), "Press Back Again to Reset Total Distance & Leave!", Toast.LENGTH_SHORT).show();
+        }
+        backPressTime = System.currentTimeMillis();
     }
 
     @Override
@@ -92,6 +138,7 @@ public class LocationActivity extends AppCompatActivity {
                         }
                     });
                 } else {
+                    lastLocation = currentLocation;
                     currentLocation = location;
                     float[] distance = new float[1];
                     Location.distanceBetween(lastLocation.getLatitude(), lastLocation.getLongitude(),
